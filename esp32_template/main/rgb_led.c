@@ -14,6 +14,9 @@ void rgb_led_wifi_app_started(void) {
 	printf("Wifi started\n");
 }
 
+void rgb_led_http_server_started(void){
+	printf("---------------------------------http_server_started --------------------------  \n");
+}
 /**
  * Indicate HTTP application has started
  */

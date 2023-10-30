@@ -12,7 +12,7 @@
  * Indicate Wifi application has started
  */
 void rgb_led_wifi_app_started(void);
-
+void rgb_led_http_server_started(void);
 /**
  * Indicate HTTP application has started
  */
