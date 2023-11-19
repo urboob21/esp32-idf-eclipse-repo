@@ -48,7 +48,9 @@ static void rgb_led_pwm_init() {
 	ledc_timer_config(&rgb_timer_config);
 
 	// Channel Configuration - 0,1,2
-	for (uint8_t rgb_channel = 0; rgb_channel < RGB_CHANNEL_NUM; rgb_channel++) {
+	for (uint8_t rgb_channel = 0; rgb_channel < RGB_CHANNEL_NUM;
+			rgb_channel++) {
+
 		ledc_channel_config_t rgb_channel_config = { .channel =
 				ledc_channel[rgb_channel].channel, .duty = 0, .hpoint = 0,
 				.gpio_num = ledc_channel[rgb_channel].gpio, .intr_type =
@@ -87,7 +89,7 @@ static void rgb_led_set_color(uint8_t red, uint8_t green, uint8_t blue) {
 void rgb_led_test_started() {
 
 	// Check init pwm ??
-	if(!g_rgb_led_pwm_init){
+	if (!g_rgb_led_pwm_init) {
 		rgb_led_pwm_init();
 	}
 
@@ -95,12 +97,24 @@ void rgb_led_test_started() {
 	rgb_led_set_color(255, 0, 0);
 }
 
-void rgb_led_display(uint8_t r,uint8_t g,uint8_t b){
+void rgb_led_display(uint8_t r, uint8_t g, uint8_t b) {
 	// Check init pwm ??
-	if(!g_rgb_led_pwm_init){
+	if (!g_rgb_led_pwm_init) {
 		rgb_led_pwm_init();
 	}
 
 	// Set the specific color
 	rgb_led_set_color(r, g, b);
+}
+
+void rgb_led_http_server_started(void) {
+	rgb_led_display(204, 255, 51);
+}
+
+void rgb_led_wifi_app_started(void) {
+	rgb_led_display(255, 102, 255);
+}
+
+void rgb_led_wifi_connected(void) {
+	rgb_led_display(0, 255, 153);
 }
