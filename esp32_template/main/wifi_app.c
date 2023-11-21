@@ -191,7 +191,7 @@ static void wifi_app_task(void *pvParameters) {
 	// Start WIFI
 	ESP_ERROR_CHECK(esp_wifi_start());
 
-	ESP_LOGI(TAG,"WIFI AP CONNECTED SUCCESSFULLY!")
+	ESP_LOGI(TAG,"WIFI AP CONNECTED SUCCESSFULLY!");
 
 	// Send test to event message
 	wifi_app_send_message(WIFI_APP_MSG_START_HTTP_SERVER);
