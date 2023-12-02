@@ -1,6 +1,7 @@
 /*
  * wifi_app.h
  *
+<<<<<<< HEAD
  *  Created on: Oct 17, 2021
  *      Author: kjagu
  */
@@ -14,6 +15,16 @@
 
 // Callback typedef
 typedef void (*wifi_connected_event_callback_t)(void);
+=======
+ *  Created on: Nov 19, 2023
+ *      Author: Phong Nguyen
+ */
+#include "esp_netif.h"
+#include "esp_wifi_types.h"
+#include "freertos/FreeRTOS.h"
+#ifndef MAIN_WIFI_APP_H_
+#define MAIN_WIFI_APP_H_
+>>>>>>> 5069f425920a07546b18c01d1fd2a5acb1dbb628
 
 // WiFi application settings
 #define WIFI_AP_SSID				"ESP32_AP"			// AP name
@@ -31,6 +42,7 @@ typedef void (*wifi_connected_event_callback_t)(void);
 #define MAX_PASSWORD_LENGTH			64					// IEEE standard maximum
 #define MAX_CONNECTION_RETRIES		5					// Retry number on disconnect
 
+<<<<<<< HEAD
 // netif object for the Station and Access Point
 extern esp_netif_t* esp_netif_sta;
 extern esp_netif_t* esp_netif_ap;
@@ -56,6 +68,21 @@ typedef enum wifi_app_message
 typedef struct wifi_app_queue_message
 {
 	wifi_app_message_e msgID;
+=======
+typedef enum {
+	WIFI_APP_MSG_START_HTTP_SERVER = 0,
+	WIFI_APP_MSG_CONNECTING_FROM_HTTP_SERVER,
+	WIFI_APP_MSG_STA_CONNECTED_GOT_IP,
+	WIFI_APP_MSG_STA_DISCONNECTED
+} wifi_app_message_t;
+
+/**
+ * Struct for message queue
+ * Expand this based on application
+ */
+typedef struct {
+	wifi_app_message_t msgId;
+>>>>>>> 5069f425920a07546b18c01d1fd2a5acb1dbb628
 } wifi_app_queue_message_t;
 
 /**
@@ -64,6 +91,7 @@ typedef struct wifi_app_queue_message
  * @return pdTRUE if an item was successfully sent to the queue, otherwise pdFALSE.
  * @note Expand the parameter list based on your requirements e.g. how you've expanded the wifi_app_queue_message_t.
  */
+<<<<<<< HEAD
 BaseType_t wifi_app_send_message(wifi_app_message_e msgID);
 
 /**
@@ -71,12 +99,16 @@ BaseType_t wifi_app_send_message(wifi_app_message_e msgID);
  */
 void wifi_app_start(void);
 
+=======
+BaseType_t wifi_app_send_message(wifi_app_message_t msgID);
+>>>>>>> 5069f425920a07546b18c01d1fd2a5acb1dbb628
 /**
  * Gets the wifi configuration
  */
 wifi_config_t* wifi_app_get_wifi_config(void);
 
 /**
+<<<<<<< HEAD
  * Sets the callback function.
  */
 void wifi_app_set_callback(wifi_connected_event_callback_t cb);
@@ -121,3 +153,10 @@ int8_t wifi_app_get_rssi(void);
 
 
 
+=======
+ * Starts the WIFI task
+ */
+void wifi_app_start();
+
+#endif /* MAIN_WIFI_APP_H_ */
+>>>>>>> 5069f425920a07546b18c01d1fd2a5acb1dbb628
