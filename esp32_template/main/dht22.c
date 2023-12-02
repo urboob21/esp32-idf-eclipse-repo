@@ -25,7 +25,7 @@
 #include "freertos/task.h"
 #include "esp_system.h"
 #include "driver/gpio.h"
-
+#include "dht22.h"
 #include "DHT22.h"
 #include "tasks_common.h"
 
@@ -109,14 +109,14 @@ int getSignalLevel(int usTimeOut, bool state) {
  0000 0010 1000 1100 0000 0001 0101 1111 1110 1110
  16 bits RH data + 16 bits T data + check sum
 
- 1) we convert 16 bits RH data from binary system to decimal system, 0000 0010 1000 1100 → 652
+ 1) we convert 16 bits RH data from binary system to decimal system, 0000 0010 1000 1100 â†’ 652
  Binary system Decimal system: RH=652/10=65.2%RH
 
- 2) we convert 16 bits T data from binary system to decimal system, 0000 0001 0101 1111 → 351
- Binary system Decimal system: T=351/10=35.1°C
+ 2) we convert 16 bits T data from binary system to decimal system, 0000 0001 0101 1111 â†’ 351
+ Binary system Decimal system: T=351/10=35.1Â°C
 
  When highest bit of temperature is 1, it means the temperature is below 0 degree Celsius.
- Example: 1000 0000 0110 0101, T= minus 10.1°C: 16 bits T data
+ Example: 1000 0000 0110 0101, T= minus 10.1Â°C: 16 bits T data
 
  3) Check Sum=0000 0010+1000 1100+0000 0001+0101 1111=1110 1110 Check-sum=the last 8 bits of Sum=11101110
 

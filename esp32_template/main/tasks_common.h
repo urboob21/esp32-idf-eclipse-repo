@@ -9,9 +9,9 @@
 #define MAIN_TASKS_COMMON_H_
 
 // WIFI task
-#define WIFI_APP_TASK_STACK_SIZE 	4069
-#define WIFI_APP_TASK_PRIORITY		5
-#define WIFI_APP_TASK_CORE			0
+#define WIFI_APP_TASK_STACK_SIZE 	    4069
+#define WIFI_APP_TASK_PRIORITY		    5
+#define WIFI_APP_TASK_CORE_ID			0
 
 // HTTP Server task (process from server ??)
 #define HTTP_SERVER_TASK_STACK_SIZE			8192

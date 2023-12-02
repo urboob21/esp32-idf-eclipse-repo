@@ -7,7 +7,7 @@
 #include "rgb_led.h"
 #include "wifi_app.h"
 #include "nvs_flash.h"
-#include "lib_dht22/dht22.h"
+#include "dht22.h"
 void app_main(void) {
 	// Initialize NVS
 		esp_err_t ret = nvs_flash_init();
